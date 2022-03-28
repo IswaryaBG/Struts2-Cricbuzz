@@ -1,0 +1,154 @@
+@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@500&family=Special+Elite&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@500&family=Inspiration&family=Special+Elite&display=swap');
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body{
+	background-image: url("./images/bgimg.jpg");
+}
+
+.wrapper{
+	background: rgba(0,0,0,0.8);
+	height: 100vh; 
+}
+
+.navbar{
+	height: 10%;
+	width: 100%;
+	background: rgba(255,255,255,0.2);
+}
+
+.logo{
+	width: 200px;
+	height: 100%;
+	padding: 10px 30px;
+}
+
+.navbar ul{
+	padding: 10px 10px;
+	float:right;
+	margin-right:20px;
+}
+
+.navbar ul li{
+	list-style:none;
+	margin:0 8px;
+	display:inline-block;
+	line-height:80px;
+}
+
+.navbar ul li a{
+	text-decoration :none;
+	color : white;
+	font-size:20px;
+	padding:6px 13px;
+	transition:.4s;
+	font-family: 'Fredoka', sans-serif;
+}
+
+.current{
+	background :red;
+	border-radius:2px;
+}
+
+.navbar ul li a:hover{
+	background :red;
+	border-radius:2px;
+}
+
+.wrapper .center{
+	position:absolute;
+	top:50%;
+	left:50%;
+	color:white;
+	transform:translate(-50%,-50%);
+	font-family:sans-serif;
+	user-select :none;
+}
+
+
+.center h1{
+	color:white;
+	font-size:70px;
+	font-weight:bold;
+	margin-top:10px;
+	text-align:center;
+}
+
+table{
+	font-family:Arial,Helvetica,sans-serif;
+	border-collapse: collapse;
+	width:300px;
+	
+}
+
+td,th{
+	border:1px solid #ddd;
+	padding:8px;
+	
+}
+
+tr td{
+	background-color:#003300;
+	text-align:center;
+	cursor:pointer;
+}
+
+tr td:hover{
+	background:#04AA6D;
+	font-weight:bold;
+}
+
+
+th{
+	padding-top:12px;
+	padding-left:50px;
+	padding-right:50px;
+	padding-bottom:12px;
+	text-align:center;
+	background-color:red;
+	color:white;
+	text-transform:uppercase;
+	font-weight:bold;
+font-family: 'Fredoka', sans-serif;
+font-family: 'Inspiration', cursive;
+font-family: 'Special Elite', cursive;
+}
+
+td a{
+	color:white;
+	text-decoration:none;
+}
+
+
+.typewriter{
+  overflow: hidden;
+  border-right: .15em solid orange; 
+  width:fit-content;
+  font-family: 'Fredoka', sans-serif;
+font-family: 'Special Elite', cursive;
+  white-space: nowrap;
+  margin: 0 auto; 
+  letter-spacing: .15em; 
+  animation: 
+    typing 3.5s steps(40, end),
+    blink-caret .75s step-end infinite;
+}
+
+
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+@keyframes blink-caret {
+  from, to { border-color: transparent }
+  50% { border-color: orange; }
+}
+
+

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+   "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+   "http://struts.apache.org/dtds/struts-2.5.dtd">
+<struts>
+
+	<package name="default" extends="struts-default">
+		
+		<action name="teams" class="com.cricbuzz.actions.TeamAction" method="execute">
+			<result name="success">/team.jsp</result>
+		</action>
+		
+		<action name="players" class="com.cricbuzz.actions.PlayerAction" method="execute">
+			<result name="success">/players.jsp</result>
+		</action>
+		
+		<action name="TeamAction" class="com.cricbuzz.actions.TeamAction" method="getTeamDetailByTeamId">
+			<result name="success">/teamDetail.jsp</result>
+		</action>
+		
+		<action name="PlayerDetailAction" class="com.cricbuzz.actions.PlayerDetailAction" method="execute">
+			<result name="success">/playerDetail.jsp</result>
+		</action>
+		
+		<action name="addTeamAction" class="com.cricbuzz.actions.TeamAction" method="addTeam">
+			<result name="success">/index.jsp</result>
+		</action>
+		
+		<action name="getAllListAction" class="com.cricbuzz.actions.GetListActions" method="execute">
+			<result name="success">/addPlayer.jsp</result>
+		</action>
+		
+		<action name="addPlayer" class="com.cricbuzz.actions.PlayerAction" method="addPlayer">
+			<result name="success">/index.jsp</result>
+		</action>
+		
+		<action name="getTeamListAction" class="com.cricbuzz.actions.GetListActions" method="execute">
+			<result name="success">/deleteTeam.jsp</result>
+		</action>
+		
+		<action name="deleteTeam" class="com.cricbuzz.actions.TeamAction" method="deleteTeam">
+			<result name="success">/index.jsp</result>
+		</action>
+		
+		<action name="getPlayerListAction" class="com.cricbuzz.actions.PlayerAction" method="execute">
+			<result name="success">/deletePlayer.jsp</result>
+		</action>
+		
+		<action name="deletePlayer" class="com.cricbuzz.actions.PlayerAction" method="deletePlayer">
+			<result name="success">/index.jsp</result>
+		</action>
+
+		<!-- <action name="person" class="com.cricbuzz.actions.PersonAction" method="execute">
+			<result name="success">/person.jsp</result>
+		</action>
+
+		<action name="role" class="com.cricbuzz.actions.RoleAction" method="execute">
+			<result name="success">/role.jsp</result>
+		</action>
+
+		<action name="battingStyle" class="com.cricbuzz.actions.BattingStyleAction" method="execute">
+			<result name="success">/battingStyle.jsp</result>
+		</action>
+
+
+		<action name="bowlingStyle"
+			class="com.cricbuzz.actions.BowlingStyleAction" method="execute">
+			<result name="success">/bowlingStyle.jsp</result>
+		</action> -->
+
+	</package>
+
+</struts>

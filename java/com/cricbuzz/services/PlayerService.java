@@ -8,10 +8,10 @@ import org.hibernate.Criteria;
 import org.hibernate.SQLQuery;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.query.Query;
 
 import com.cricbuzz.dao.DAOUtil;
 import com.cricbuzz.model.Player;
-import com.cricbuzz.model.Team;
 
 public class PlayerService {
 	Player player;
@@ -62,21 +62,23 @@ public class PlayerService {
 	  
 	 }
 	
-	public List<Player> getPlayersByTeamId(int selectedTeamId){
+	@SuppressWarnings("deprecation")
+	public boolean preRemove(int selectedTeamId){
 		Session session = DAOUtil.getSession();
-		  System.out.println("Player id in getPlayerDetail : "+selectedTeamId);
-		  //int playerId=sc.nextInt();
-		  SQLQuery query=session.createSQLQuery("select playerId,name,dateOfBirth,age,homeTown,teamName,role,battingStyle,bowlingStyle,iccRanking\n" + 
-		    "from Player pl\n" + 
-		    "left join Person ps on pl.person_personId = ps.personId\n" + 
-		    "left join Team t on t.teamId = pl.teamName_teamId\n" + 
-		    "left join Role r on pl.role_roleId = r.roleId\n" + 
-		    "left join BattingStyle bt on pl.battingStyle_battingStyleId = bt.battingStyleId\n" + 
-		    "left join BowlingStyle bw on pl.bowlingStyle_bowlingStyleId = bw.bowlingStyleId\n"
-		    +"where teamId="+selectedTeamId);
-		  query.setResultTransformer(Criteria.ALIAS_TO_ENTITY_MAP);
-		  List playerList=query.list();
-		return playerList;
+		  System.out.println("Team id in getPlayerDetail : "+selectedTeamId);
+		 Transaction transaction=session.beginTransaction();
+	     Query query = session.createSQLQuery("update Player set teamName_teamId = :id" + " where teamName_teamId = :selectedTeamId");
+	     query.setParameter("id", null);
+	     query.setParameter("selectedTeamId", selectedTeamId);
+	     int rr = query.executeUpdate();
+
+	     transaction.commit();
+
+	     if (rr != 0) {
+	         return true;
+	     } else {
+	         return true;
+	     }
 	}
 	
 	public void savePlayer(Player player) {

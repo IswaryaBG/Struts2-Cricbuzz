@@ -11,7 +11,6 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 import com.cricbuzz.dao.DAOUtil;
-import com.cricbuzz.model.Player;
 import com.cricbuzz.model.Team;
 
 public class TeamService {

@@ -2,9 +2,6 @@ package com.cricbuzz.actions;
 
 import java.util.List;
 
-import org.hibernate.Session;
-
-import com.cricbuzz.dao.DAOUtil;
 import com.cricbuzz.model.Player;
 import com.cricbuzz.model.Team;
 import com.cricbuzz.services.PlayerService;
@@ -19,10 +16,10 @@ public class TeamAction extends ActionSupport {
 	private Team team;
 	private int teamId;
 	private int selectedTeamId;
-	
-	private List<Player> playerList;
+
 	private Player player;
 	private PlayerService playerService;
+	private boolean nullCheck;
 
 	public TeamAction() {
 		teamService = new TeamService();
@@ -49,15 +46,8 @@ public class TeamAction extends ActionSupport {
 	}
 	
 	public String deleteTeam() {
-		setPlayerList(playerService.getPlayersByTeamId(selectedTeamId));
-		System.out.println("Player List : "+playerList);
-		for (Player player : playerList) {
-		    player.setTeamName(null);
-		}
-//		teamList=teamService.getTeamDetailByTeamId(selectedTeamId);
-//		for (Team team : teamList) {
-//		    team.setTeamName(null);
-//		}
+		nullCheck=playerService.preRemove(selectedTeamId);
+		System.out.println("Checked");
 		Team team=teamService.getTeam(selectedTeamId);
 		teamService.deleteTeam(team);
 		System.out.println("Team deleted successfully");
@@ -96,14 +86,6 @@ public class TeamAction extends ActionSupport {
 		this.selectedTeamId = selectedTeamId;
 	}
 
-	public List<Player> getPlayerList() {
-		return playerList;
-	}
-
-	public void setPlayerList(List<Player> playerList) {
-		this.playerList = playerList;
-	}
-
 	public Player getPlayer() {
 		return player;
 	}
@@ -111,8 +93,13 @@ public class TeamAction extends ActionSupport {
 	public void setPlayer(Player player) {
 		this.player = player;
 	}
-	
-	
-	
+
+	public boolean isNullCheck() {
+		return nullCheck;
+	}
+
+	public void setNullCheck(boolean nullCheck) {
+		this.nullCheck = nullCheck;
+	}
 
 }
